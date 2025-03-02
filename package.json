@@ -1,0 +1,27 @@
+{
+  "name": "newshub",
+  "version": "1.0.0",
+  "description": "A news portal application that can facilitate community and college news sharing allowing users to post and access local updates",
+  "homepage": "https://github.com/sonyharshitha23/TheNewsHub#readme",
+  "bugs": {
+    "url": "https://github.com/sonyharshitha23/TheNewsHub/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sonyharshitha23/TheNewsHub.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "mongoose": "^8.10.1",
+    "nodemon": "^3.1.9"
+  },
+  "proxy": "http://localhost:/5000"
+}

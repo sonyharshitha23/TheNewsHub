@@ -1,7 +1,8 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 function SideBar({ showSideBar }) {
   const location = useLocation();
+  const navigate = useNavigate();
   const menuItems = [
     {
       title: "Home",
@@ -24,19 +25,23 @@ function SideBar({ showSideBar }) {
       path: "/logout",
     },
   ];
+  const logout = () => {
+    localStorage.removeItem("ThenewsHub-users");
+    navigate("/");
+  };
   return (
     <div
       className={`min-h-screen max-h-full transition-all duration-500 bg-primary h-screen flex flex-col overflow-hidden ${
         showSideBar ? "w-60" : "w-0"
       }`}
     >
-      <div>
+      <div className="flex justify-center flex-col ml-10">
         <h1 className="text-2xl font-bold mt-8 ml-7 text-yellow-500">
           THE NEWSHUB
         </h1>
         <div className="flex flex-col mt-20">
           {menuItems.map((item) => {
-            return (
+            return item.title !== "Logout" ? (
               <Link
                 to={`${item.path}`}
                 className={`pl-10 py-5 text-gray-200 hover:bg-gray-50 hover:text-gray-500 text-sm ${
@@ -46,6 +51,13 @@ function SideBar({ showSideBar }) {
               >
                 {item.title}
               </Link>
+            ) : (
+              <span
+                onClick={logout}
+                className="pl-10 py-5 text-gray-200 hover:bg-gray-50 hover:text-gray-500 text-sm cursor-pointer"
+              >
+                Logout
+              </span>
             );
           })}
         </div>
